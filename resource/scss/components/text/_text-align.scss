@@ -1,0 +1,39 @@
+
+.t_center{text-align: center;}
+.t_justify{text-align: justify;}
+.t_left{text-align: left;}
+.t_right{text-align: right;}
+
+.va_m{vertical-align: middle;}
+.va_m_box span{
+  display: inline-block;
+  vertical-align: middle;
+}
+.va_t{vertical-align: top;}
+.va_b{vertical-align: bottom;}
+.va_base{vertical-align: baseline;}
+
+/*text*/
+.wb_ka{word-break: keep-all;}
+.wb_ba{word-break: break-all;}
+.wh_nw{white-space: nowrap;}
+
+
+/*display*/
+.text_hide {
+  position: absolute;
+  z-index: -1;
+  line-height: 1 !important;
+  font-size: 1px !important;
+  width: 1px !important;
+  height: 1px !important;
+  color: transparent !important;
+  background: transparent !important;
+  overflow: hidden !important;
+  font-size: 1px;
+  text-indent: -99999px;
+  opacity: 0.05 !important;
+  &:before, &:after {
+    display: none !important;
+  }
+}

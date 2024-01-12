@@ -1,0 +1,16 @@
+
+/*font-size*/
+.fs_16{font-size: rem(16);}
+.fs_18{font-size: rem(18);}
+.fs_20{font-size: rem(20);}
+.fs_22{font-size: rem(22);}
+.fs_24{font-size: rem(24);}
+.fs_26{font-size: rem(26);}
+.fs_30{font-size: rem(30);}
+.fs_36{font-size: rem(36);}
+.fs_48{font-size: rem(48);}
+
+/*font-weight*/
+@for $i from 1 to 10  {
+    .fw_#{$i*100}{font-weight: $i*100}
+}

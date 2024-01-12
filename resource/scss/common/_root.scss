@@ -1,0 +1,66 @@
+@use "_functions" as *;
+@use "_mixin_media.scss" as *;
+
+:root {
+    --color-b: #000;
+    --color-b2: #666;
+    --color-b3: #999;
+    --color-black: #111;
+    --color-white: #fff;
+    --color-white2: #f8f8f8;
+    --white-white3: #eee;
+    
+    --color-grey1: #444;
+    --color-grey2: #707070;
+    --color-grey3: #b4b4b4;
+    --color-grey4: #9e9e9e;
+    --color-grey5: #c8c8c8;
+
+    --bg-grey1: #f3f6f8;
+
+    --brand-color-main: #cc0d0d;
+    --brand-color-sub: #ff7700;
+    --brand-color-sub2: #c20909;
+    --brand-color-sub3: #3c2e0c;
+    --brand-color-sub4: #a21313;
+    --border-color: #dddddd;
+
+    --border-color2: #e2e2e2;
+
+    --color-red: #e40000;
+
+    --pine-green: #020a0a;
+
+    --spacing: #{rem(16)};
+    --header-hei: #{rem(82)};
+    @include tab {
+        --spacing: #{rem(32 * 0.6)};
+        --header-hei: #{rem(96 * 0.6)};
+        --sub-visual-hei: #{rem(760 * 0.6)};
+    }
+    @include mob {
+        --spacing: #{rem(16)};
+        --header-hei: #{rem(48)};
+        --sub-visual-hei: #{rem(320 + 60)};
+        --loc-hei: #{em(60, 16)};
+    }
+
+    --h-wrap: #{rem(1846 + 16 * 2)};
+    --wrap: #{rem(1420 + 16 * 2)};
+    --f-wrap: #{rem(1440 + 16 * 2)};
+
+
+    
+    --custom-wave-anim: custom_common_wave 1.4s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+
+    --dep2-hei: #{rem(255)};
+}
+.tc_1 { color :var(--brand-color-main);}
+.tc_2 { color :var(--brand-color-sub);}
+.tc_3 { color :var(--brand-color-sub2);}
+.tc_4 { color :var(--brand-color-sub3);}
+.tc_w { color: var(--color-white); }
+.tc_b { color :var(--color-black); }
+.bg_g2 { background-color: var(--color-grey2); }
+.bg_w { background-color: var(--color-white); }
+@include mob(false, 0.5){:root{font-size: vw(16, 400);}}

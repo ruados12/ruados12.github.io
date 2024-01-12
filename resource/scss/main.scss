@@ -1,0 +1,32 @@
+@charset 'utf-8';
+
+@use "sass:math";
+@use "sass:selector";
+@use 'common/' as *;
+
+
+.cvs_wrap {
+    position: relative;
+    overflow: hidden;
+    // background-color: #efefef;
+    // background: linear-gradient(to bottom, #000000 0%, #131d35 100%);
+    background-color: #222;
+    background: linear-gradient(45deg, #3f3251 2%, #002025 100%);
+    #cvs {
+        display: block;
+        opacity: 0.25;
+        background-color: transparent;
+    }
+    .tit_wrap {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+}
+.main_tit {
+    font-size: em(72, 16);
+    color: #fff;
+    opacity: .85;
+    text-shadow: 5px 4px 4px #000;
+    letter-spacing: .05em;
+}

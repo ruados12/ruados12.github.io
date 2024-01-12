@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    
+    <title></title>
+
+    <meta name="apple-mobile-web-app-title" content="" />
+    <meta name="robots" content="index,follow"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    <meta property="og:title" id="meta_og_title" content="">
+    <meta property="og:url" id="meta_og_url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:description" id="meta_og_description" content=""/>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:url" content="">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:description" content=""/>
+
+    <!-- fonts : pretendard -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+    <!--style -->
+    <link rel="stylesheet" type="text/css" corssorigin href="./resource/css/reset.css"/>
+
+    <link rel="stylesheet" type="text/css" corssorigin href="./resource/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="./resource/css/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="./resource/css/main.css"/>
+
+
+    <!--lib / gsap-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.6.3/smooth-scrollbar.js" ></script>
+</head>
+<body>
+    <main id="container">
+        <div id="header">
+            <div class="h_inner">
+                <button class="toggle_btn"><span class="line"></span></button>
+            </div>
+        </div>
+        <div id="allMenu" class="all_menu">
+            <svg>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+            </svg>
+            <canvas id="bubble" class="bubble bubble_cvs"></canvas>
+            <div class="inner">
+                <ul class="gnb on">
+                    <li class="dep1"><a href="#" class="dep_tit">Main</a></li>
+                    <li class="dep1"><a href="#" class="dep_tit">About</a></li>
+                    <li class="dep1"><a href="#" class="dep_tit">Works</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cvs_wrap">
+            <canvas id="cvs"></canvas>
+            <div class="tit_wrap">
+                <h1 class="main_tit">Portfolio</h1>
+            </div>
+        </div>
+    </main>
+    <script src="/resource/js/main.js"></script>
+    <script src="/resource/js/layout.js"></script>
+</body>
+</html>

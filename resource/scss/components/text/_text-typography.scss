@@ -1,0 +1,141 @@
+/*
+*****************************************
+*          typography  : start
+*****************************************
+*/
+
+//
+// font-face  : font mixin (폰트)
+// date       : 2020.07.27
+// 
+@mixin font-face(
+  $font-family,
+  $font-local:null,
+  $font-path,
+  $font-weight: null, 
+  $uni : null,
+  $font-style: null, 
+  $exts: woff2 woff eot otf
+) {
+
+  $src: null;
+
+  $extmods: (
+    eot: "?",
+    svg: "#" + str-replace($font-family, " ", "_")
+  );
+
+  $formats: (
+    otf: "opentype",
+    ttf: "truetype",
+    eot: "embedded-opentype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($font-path + "." + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($font-family);
+    font-display: swap;
+    font-style: $font-style;
+    font-weight: $font-weight;
+    @if $font-local{
+      src: local(quote($font-local)), $src;
+    }
+    @else {
+      src: $src;
+    }
+    @if $uni{
+      unicode-range: unquote($uni);
+    }
+  }
+}
+
+/*
+영문 (대문자) : U+0041-005A
+영문 (소문자) : U+0061-007A
+숫자 : U+0030-0039
+한글 : U+AC00-U+D7A3
+전체 : U+0020-007E
+*/
+
+@font-face {
+  font-family: 'GmarketSans';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+//폰트관련
+//
+//font : Noto Sans Korean
+$font-path: "../fonts/";
+$font-name: "Pretendard"; 
+
+
+$font-family : 'Pretendard','Noto Sans KR', 'apple color emoji', 'segoe ui emoji', 'noto color emoji', 'android emoji', 'emojisymbols', 'emojione mozilla', 'twemoji mozilla', 'segoe ui symbol', sans-serif;
+:root{
+  --font-family : 'Pretendard','Noto Sans KR', 'apple color emoji', 'segoe ui emoji', 'noto color emoji', 'android emoji', 'emojisymbols', 'emojione mozilla', 'twemoji mozilla', 'segoe ui symbol', sans-serif;
+}
+body, html{font-family: $font-family;}
+
+a{ cursor: pointer; }
+
+.font_ptd { font-family: 'Pretendard', sans-serif;}
+.font_gmk { font-family: 'GmarketSans', sans-serif;}
+.font_nsk { font-family: 'Noto Sans KR',sans-serif;}
+
+

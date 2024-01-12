@@ -1,0 +1,28 @@
+.cvs_wrap {
+  position: relative;
+  overflow: hidden;
+  background-color: #222;
+  background: linear-gradient(45deg, #3f3251 2%, #002025 100%);
+}
+.cvs_wrap #cvs {
+  display: block;
+  opacity: 0.25;
+  background-color: transparent;
+}
+.cvs_wrap .tit_wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.main_tit {
+  font-size: 4.5em;
+  color: #fff;
+  opacity: 0.85;
+  text-shadow: 5px 4px 4px #000;
+  letter-spacing: 0.05em;
+}
+
+/*# sourceMappingURL=main.css.map */

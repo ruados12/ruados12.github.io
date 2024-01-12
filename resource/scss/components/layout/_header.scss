@@ -1,0 +1,91 @@
+@charset 'utf-8';
+
+@use "sass:math";
+@use "sass:selector";
+@use '../../common/' as *;
+
+
+#header {
+    position: fixed; top: 0; left: 0;
+    width: 100%; max-width: 100%;
+    z-index: 5005;
+    font-size: rem(20);
+    // transition: background .25s;
+    color: var(--color-white);
+    transition: transform .35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    .h_inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: var(--h-wrap);
+        height: var(--header-hei);
+        width: 100%;
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        padding: {
+            left: em(38, 20);
+            right: em(40, 20);
+        }
+        position: relative;
+        z-index: 8;
+        @include tab {
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-hei);
+            padding: {
+                left: var(--spacing);
+                right: var(--spacing);
+            }
+        }
+    }
+    .toggle_btn {
+        display: flex;
+        position: relative;
+        margin-left: auto;
+        width: em(30, 16); height: em(25, 16);
+        overflow: hidden;
+        .line, &::before, &::after {
+            display: block;
+            position: absolute; left: 0;
+            width: 100%; height: 2px;
+            background-color: #fff;
+            transition: transform .25s, width .25s;
+        }
+        &::before, &::after {
+            content: ''; 
+            transform-origin: left;
+        }
+        &::before {
+            top: 0;
+        }
+        &::after {
+            bottom: 0; 
+        }
+        .line {
+            top: 50%; margin-top: -1px;
+        }
+        &:hover {
+            .line {
+                transform: translateX(-25%);
+            }
+        }
+        &.on {
+            .line {
+                transform: translateX(-105%);
+            }
+            &::before, &::after {
+                width: 135.055%;
+                transition-delay: .25s .35s;
+                transition-duration: .35s;
+            }
+            &::before {
+                transform: rotate(45deg);
+            }
+            &::after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
