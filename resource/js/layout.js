@@ -26,6 +26,7 @@ class Layout {
     }
     closeAllMenu() {
         this.allMenu.classList.remove('on');
+        this.toggle.classList.remove('on');
         bubble.cancelBubble();
     }
 }

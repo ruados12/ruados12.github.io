@@ -14,10 +14,6 @@ ctx.fill();
 var dots = [];
 var dotsCount = 300;
 
-const rand = function (min, max) {
-    return ~~(Math.random() * (max - min + 1)) + min;
-};
-
 function Hue() {
     this.h = rand(0, 250);
 }
@@ -158,10 +154,11 @@ Range.prototype = {
     },
 };
 
-var hue = new Hue();
-var r = new Range();
-var bt = 0;
-var loop = function (time) {
+let hue = new Hue();
+let r = new Range();
+let bt = 0;
+let particleRender;
+const loop = function (time) {
     hue.update();
 
     // ctx.fillStyle = '#efefef';
@@ -187,7 +184,14 @@ var loop = function (time) {
         ctx.stroke();
     }
 
-    requestAnimationFrame(loop);
+    particleRender = requestAnimationFrame(loop);
 };
 
-requestAnimationFrame(loop);
+particleRender = requestAnimationFrame(loop);
+
+function stopParticle() {
+    cancelAnimationFrame(particleRender);
+}
+function startparticle() {
+    particleRender = requestAnimationFrame(loop)
+}

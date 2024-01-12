@@ -27,6 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 
 
@@ -62,8 +63,8 @@
             <canvas id="bubble" class="bubble bubble_cvs"></canvas>
             <div class="inner">
                 <ul class="gnb on">
-                    <li class="dep1"><a href="#" class="dep_tit">Main</a></li>
-                    <li class="dep1"><a href="#" class="dep_tit">About</a></li>
+                    <li class="dep1"><a href="/index.html" class="dep_tit">Main</a></li>
+                    <li class="dep1"><button type="button" name="about" class="dep_tit">About</button></li>
                     <li class="dep1"><a href="#" class="dep_tit">Works</a></li>
                 </ul>
             </div>
@@ -74,8 +75,15 @@
                 <h1 class="main_tit">Portfolio</h1>
             </div>
         </div>
+        <div class="sub_wrap">
+            <canvas id="subCvs" class="sub_cvs"></canvas>
+            <div class="sub_box"></div>
+        </div>
     </main>
+
+    <script src="/resource/js/common.js"></script>
     <script src="/resource/js/main.js"></script>
     <script src="/resource/js/layout.js"></script>
+    <script src="/resource/js/sub.js"></script>
 </body>
 </html>

@@ -25,4 +25,52 @@
   letter-spacing: 0.05em;
 }
 
+.sub_wrap {
+  display: none;
+}
+.sub_wrap.on {
+  display: block;
+}
+.sub_wrap.on .sub_box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #282a3a;
+}
+.sub_wrap .sub_cvs {
+  background-color: rgb(255, 176, 158);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1005;
+  transition: opacity 0.35s;
+  opacity: 1;
+}
+.sub_wrap .sub_cvs.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.about_wrap {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about_wrap .about {
+  font-size: 2em;
+}
+.about_wrap .tit {
+  font-size: 3.875em;
+  text-align: center;
+  color: #fff;
+}
+
 /*# sourceMappingURL=main.css.map */

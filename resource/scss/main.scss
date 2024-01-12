@@ -30,3 +30,41 @@
     text-shadow: 5px 4px 4px #000;
     letter-spacing: .05em;
 }
+
+.sub_wrap {
+    display: none;
+    &.on {
+        display: block;
+        .sub_box {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            overflow-y: auto;
+            background-color: #282a3a; 
+        }
+    }
+    .sub_cvs {
+        background-color: rgba(255,176,158,1);
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 1005;
+        transition: opacity .35s;
+        opacity: 1;
+        &.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+}
+.about_wrap {
+    width: 100%; height: 100%;
+    overflow-y: auto;
+    display: flex; align-items: center; justify-content: center;
+    .about {
+        font-size: em(32, 16);
+    }
+    .tit {
+        font-size: em(62, 16);
+        text-align: center;
+        color: #fff;
+    }
+}
