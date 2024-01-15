@@ -238,7 +238,6 @@ class Platte {
         this.rects[this.activeIdx].classList.add('on');
         const prevElement = this.activeIdx <= 0 ? this.rects.length - 1 : Number(this.activeIdx) - 1;
         const nextElement = this.activeIdx >= this.rects.length - 1 ? 0 : Number(this.activeIdx) + 1;
-        console.log(this.activeIdx, prevElement, nextElement);
         this.rects[prevElement].classList.add('prev');
         this.rects[nextElement].classList.add('next');
         scaleImg.changeScaleImg(this.activeidx)
@@ -320,12 +319,10 @@ class ScaleWorks {
     getScaleImg(img) {
         const imgWid = img.naturalWidth;
         const imgHei = img.naturalHeight;
-        console.log(imgWid, imgHei);
 
         const imgRatio = imgWid / imgHei;
         const docRatio = wid / hei;
         let scaleHei, scaleWid, left, top;
-        console.log(imgRatio, docRatio);
         if(imgRatio >= 1) {
             // 이미지가 가로가 큰 경우
             if(imgRatio >= docRatio) {
@@ -353,8 +350,6 @@ class ScaleWorks {
                 top = (hei - scaleHei) / 2;
             }
         }
-        console.log(img);
-        console.log(scaleHei, scaleWid, left, top);
 
         return {
             w: scaleWid,
