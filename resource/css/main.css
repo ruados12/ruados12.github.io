@@ -73,4 +73,186 @@
   color: #fff;
 }
 
+#workWrap {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#workWrap .scale_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  filter: blur(5px);
+}
+#workWrap .scale_box canvas {
+  vertical-align: top;
+}
+#workWrap .scale_box::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.345);
+  backdrop-filter: brightness(0.65);
+}
+
+.work_lists, .work_list, .circle {
+  width: 100%;
+}
+
+.work_lists {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circle_box .circle {
+  display: block;
+}
+
+.work_box {
+  width: 100%;
+  height: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(90%);
+}
+
+.btn_lists {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  gap: 0.75em;
+}
+.btn_lists::after {
+  content: "";
+  display: block;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #fff;
+  order: 2;
+  border-radius: 50%;
+}
+.btn_lists .arr [class*=material] {
+  transition: transform 0.25s;
+}
+.btn_lists .prev {
+  order: 1;
+}
+.btn_lists .prev:hover [class*=material] {
+  transform: translateX(-15%);
+}
+.btn_lists .next {
+  order: 3;
+}
+.btn_lists .next:hover [class*=material] {
+  transform: translateX(15%);
+}
+.btn_lists [class*=material] {
+  font-size: 2em;
+  color: #fff;
+  vertical-align: top;
+}
+
+.work_list {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: transform 0.5s;
+  width: 100%;
+  height: 100%;
+}
+.work_list .work_item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-flex;
+  width: 12.5em;
+  height: 12.5em;
+  margin-top: -6.25em;
+  margin-left: -6.25em;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+.work_list .work_item.on .lnk {
+  transform: scale(1.1);
+}
+.work_list .work_item.prev .lnk, .work_list .work_item.next .lnk {
+  transform: scale(1);
+}
+.work_list .lnk {
+  display: block;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.25s;
+  transform: scale(0.9);
+  transform-origin: bottom;
+}
+.work_list .card_box {
+  transform: rotate(90deg);
+}
+.work_list .card_box:hover .lab {
+  transform: translateY(-10%);
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.work_list .card_box:hover .card_img {
+  transform: translateY(-10%);
+}
+.work_list .card_img, .work_list .lab {
+  width: 100%;
+  height: 17.5em;
+}
+.work_list .card_img {
+  position: relative;
+  transition: transform 0.3s;
+}
+.work_list .card_img::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.work_list .lab {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9375em 0.625em;
+  color: #fff;
+  transition: all 0.3s;
+  text-align: center;
+  opacity: 0;
+}
+
 /*# sourceMappingURL=main.css.map */
