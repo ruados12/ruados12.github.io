@@ -303,6 +303,10 @@ class ScaleWorks {
             }
             return acc;
         }, []);
+        for(let el of uniqueArr) {
+            const img = new Image();
+            img.src = el.src;
+        }
 
         this.works = Array.from(this.wrap.querySelectorAll('.work_item'));
     }
@@ -360,6 +364,7 @@ class ScaleWorks {
     }
     setScaleImg(img) {
         const info = this.getScaleImg(img);
+        this.ctx.clearRect(0, 0, wid, hei);
         this.ctx.drawImage(img, info.left, info.top, info.w, info.h);
     }
     getScalePath(el) {

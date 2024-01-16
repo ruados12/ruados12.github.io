@@ -43,7 +43,7 @@ class Bubble {
             w: this.w,
             h: this.h,
             y: this.h,
-            speed: 0.5,
+            speed: 0.25,
             totalTime: 250,
             duration: 250,
             time: 0,

@@ -3,6 +3,7 @@
   overflow: hidden;
   background-color: #222;
   background: linear-gradient(45deg, #3f3251 2%, #002025 100%);
+  overflow: hidden;
 }
 .cvs_wrap #cvs {
   display: block;
@@ -23,6 +24,13 @@
   opacity: 0.85;
   text-shadow: 5px 4px 4px #000;
   letter-spacing: 0.05em;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.subs {
+  display: block;
+  font-size: 0.5em;
 }
 
 .sub_wrap {
