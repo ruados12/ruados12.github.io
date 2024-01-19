@@ -266,9 +266,82 @@
     }
 }
 .info_wrap {
-    position: fixed; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%; height: 100%;
-    background-color: #fff;
-    max-width: 800px; max-height: 80vh;
+    .inner {
+        max-width: 650px; max-height: 50vh;
+        padding: 0 em(16, 16);
+        background-color: #fff;
+        border-radius: 0 0 em(20, 16) 0;
+        overflow: hidden;
+    }
+    
+    .port_infos {
+        padding: em(12, 16) 0;
+        border: {
+            top: 2px solid #ccc;
+            bottom: 1px solid #ddd;
+        }
+    }
+    .port_item {
+        display: flex;
+        align-items: center;
+        & + .port_item {
+            margin-top: em(8, 16);
+        }        
+        .lab {
+            display: block;
+            position: relative;
+            font-size: em(14, 16);
+            line-height: 1.25;
+            font-weight: 700;
+            padding-right: em(12, 14);
+            margin-right: em(10, 14);
+            letter-spacing: 0;
+            min-width: em(60, 14);
+            &::after {
+                content:''; display: block;
+                position: absolute; top: 50%; right: 0;
+                border-bottom: 2px solid #222;
+                // width: em(5, 16);
+            }
+        }
+        .progress {
+            position: relative;
+            width: em(300, 16);
+            max-width: 80%;
+            height: em(14, 16);
+            background-color: #ddd;
+            border-radius: em(14, 16);
+            overflow: hidden;
+            --progress: 0;
+            &::before {
+                content:''; display: block;
+                background-color: #222;
+                position: absolute; left: 0; top: 0;
+                height: 100%;
+                border-radius: em(14, 16);
+                width: 100%;
+                transform: scaleX(var(--progress));
+                transform-origin: left;
+                transition: transform .5s .15s ease-out;
+            }
+            &::after {
+                content: attr(data-progress)'%';
+                display: flex;  align-items: center; justify-content: center;
+                font-size: em(10, 16);
+                width: 100%; height: 100%;
+                filter: invert(.6);
+                color: #ccc;
+                font-weight: normal;
+
+            }
+        }
+
+    }
+    .txt_cont {
+        display: block;
+        font-size: em(14, 16);
+        line-height: 1.65;
+        margin-top: em(12, 16); margin-bottom: em(12, 16);
+        word-break: keep-all;
+    }
 }

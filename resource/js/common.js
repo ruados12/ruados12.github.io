@@ -34,6 +34,7 @@ if(!String.prototype.substr) {
         }
     };
 }
+
 (function (arr) {
     arr.forEach(function (item) {
         if (item.hasOwnProperty('after')) {
@@ -132,6 +133,25 @@ window.addEventListener('resize', throttle(function() {
     }
 }, 300));
 
+
+function getRequest(seq, path) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', `${path}`, true);
+    xhr.responseType = "json";
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xhr.send(`seq=${seq}`);
+    return new Promise((resolve, reject) => {
+        xhr.onload = () => {
+            if(xhr.status == 200) {
+                resolve(xhr.response.data[seq]);
+            }else {
+                // 실패
+                console.log("HTTP 응답 오류: " + xhr.status);
+            }
+        }
+    })
+}
 
 // 넘어온 값이 빈값인지 체크
 function isEmpty(value){

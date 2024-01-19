@@ -14,7 +14,7 @@ class Paging {
         const tg = evt.currentTarget;
         const pageName = this.selectPage(tg.name);
         this.xhr = new XMLHttpRequest();
-        this.xhr.open("GET", `/${pageName}.html`);
+        this.xhr.open("GET", `/${pageName}.html`, true);
         this.xhr.send();
         this.xhr.onload = () => {
             stopParticle();
@@ -198,7 +198,9 @@ class Platte {
         let rects = Array.from(this.works.querySelectorAll('.work_item'));
         this.cnt = rects.length;
         this.startX, this.startY, this.endX, this.endY;
+        let count = 0;
         for (let rect of rects) {
+            rect.dataset.seq = count++;
             if(this.cnt++ >= 20) break;
             this.lists.appendChild(rect.cloneNode(true));
         }
@@ -213,6 +215,7 @@ class Platte {
             let rect = this.rects[i];
             rect.style.transform = `rotate(${this.angle * i}deg) translate(${this.radius}px)`;
             rect.addEventListener('dragstart', this.disabledDrag);
+            rect.addEventListener('click', this.changeClickPlatte.bind(this, event));
         }
         this.activeIdx = 0;
         this.rects[this.activeIdx].classList.add('on');
@@ -225,7 +228,66 @@ class Platte {
         this.works.addEventListener('mousedown', (evt) => this.touchStart(this, evt), true);
         this.works.addEventListener('touchend', (evt) => this.touchEnd(this, evt), true);
         this.works.addEventListener('mouseup', (evt) => this.touchEnd(this, evt), true);
+
+
+        // tooltip
+        this.tooltip = {};
+        this.tooltip.wrap = document.querySelector('#infoPop')
+        this.tooltip.tit = this.tooltip.wrap.querySelector('.popup_tit');
+        this.tooltip.url = this.tooltip.wrap.querySelector('.st_url');
+        this.tooltip.progress = this.tooltip.wrap.querySelector('.progress');
+        this.tooltip.conts = this.tooltip.wrap.querySelector('.txt_cont');
+        this.tooltip.closeBtn = this.tooltip.wrap.querySelector('.close_btn');
+        this.tooltip.closeBtn.addEventListener('click', () => {
+            this.tooltip.wrap.classList.remove('on');
+        })
+    }
+    changeClickPlatte() {
+        // 클릭해서 전환시
+        let selectIdx, step;
+        for(let i = 0; i < this.rects.length; i++) {
+            const rect = this.rects[i];
+            if(rect == event.currentTarget) {
+                selectIdx = i;
+            }
+        }
+        if(selectIdx == this.activeIdx) {
+            this.onTooltip();
+            return;
+        }
+        step = selectIdx - this.activeIdx;
+        if(this.activeIdx <= selectIdx && Math.abs(step) > 3 ) {
+            step = step - this.rects.length;
+        }else if(this.activeIdx >= selectIdx && Math.abs(step) > 3) {
+            step = step + this.rects.length;
+        }
         
+        this.moveCycle(selectIdx, step)
+    }
+
+    onTooltip() {
+        event.preventDefault();
+        const tg = event.currentTarget;
+        if(!tg.classList.contains('on')) return false;
+        if(!tg.dataset.seq) return;
+        getRequest(tg.dataset.seq, '/detail.json').then((result) => {
+            this.openDetailPop(result);
+        });
+    };
+    openDetailPop(data) {
+        this.tooltip.tit.innerHTML = data.tit;
+        console.log(data.url);
+        if(data.url != '' && data.url != '-') {
+            this.tooltip.url.innerHTML = data.url;
+            this.tooltip.url.href = data.url;
+        }else {
+            this.tooltip.url.innerHTML = '-';
+            this.tooltip.url.href = '#';
+        }
+        this.tooltip.progress.dataset.progress = data.progress;
+        this.tooltip.progress.style.setProperty('--progress',data.progress * 0.01);
+        this.tooltip.conts.innerHTML = data.contents;
+        this.tooltip.wrap.classList.add('on');
     }
 
     disabledDrag() {
@@ -241,6 +303,13 @@ class Platte {
         this.rects[prevElement].classList.add('prev');
         this.rects[nextElement].classList.add('next');
         scaleImg.changeScaleImg(this.activeidx)
+    }
+    moveCycle(act, step) {
+        console.log(act, step);
+        this.lists.style.transform = 'rotate('+(parseInt(this.getDeg()) - Math.floor(this.angle) * step)+'deg)';
+        this.rects[this.activeIdx].classList.remove('on');
+        this.activeIdx = act;
+        this.changeActiveEl();
     }
     nextCycle() {
         this.lists.style.transform = 'rotate('+(parseInt(this.getDeg()) - Math.floor(this.angle))+'deg)';
