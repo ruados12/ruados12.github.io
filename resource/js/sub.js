@@ -276,7 +276,6 @@ class Platte {
     };
     openDetailPop(data) {
         this.tooltip.tit.innerHTML = data.tit;
-        console.log(data.url);
         if(data.url != '' && data.url != '-') {
             this.tooltip.url.innerHTML = data.url;
             this.tooltip.url.href = data.url;
@@ -305,7 +304,6 @@ class Platte {
         scaleImg.changeScaleImg(this.activeidx)
     }
     moveCycle(act, step) {
-        console.log(act, step);
         this.lists.style.transform = 'rotate('+(parseInt(this.getDeg()) - Math.floor(this.angle) * step)+'deg)';
         this.rects[this.activeIdx].classList.remove('on');
         this.activeIdx = act;
@@ -372,9 +370,16 @@ class ScaleWorks {
             }
             return acc;
         }, []);
+        const tempCvs = document.createElement('canvas');
+        const tempCtx = tempCvs.getContext('2d');
+        tempCtx.clearRect(0, 0, wid, hei);
         for(let el of uniqueArr) {
             const img = new Image();
             img.src = el.src;
+            img.onload = () => {
+                console.log(img.width, img.height);
+                tempCtx.drawImage(img, 0, 0, img.width, img.height);
+            }
         }
 
         this.works = Array.from(this.wrap.querySelectorAll('.work_item'));
