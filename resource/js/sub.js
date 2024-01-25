@@ -377,7 +377,6 @@ class ScaleWorks {
             const img = new Image();
             img.src = el.src;
             img.onload = () => {
-                console.log(img.width, img.height);
                 tempCtx.drawImage(img, 0, 0, img.width, img.height);
             }
         }

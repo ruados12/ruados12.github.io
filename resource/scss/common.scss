@@ -176,7 +176,11 @@ br.lg, br.md, br.smd, br.sm, br.xs {
         padding: em(16, 16) 0;
     }
     .close_btn {
-        // position: absolute; top: 0%; right: 0;
-        
+        // position: absolute; top: 0%; right: 0;        
     }
+}
+
+#loadingWrap {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
 }
